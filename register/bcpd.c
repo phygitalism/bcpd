@@ -220,7 +220,7 @@ int bcpd(
       #pragma omp parallel for private (j)
       for(i=0;i<M;i++)for(j=i;j<M;j++) G1[i+M*j]=G1[j+M*i]=G[i+M*j]+(i==j?cc/w[i]:0);
       dposv_(&uplo,&M,&D,G1,&M,E,&M,&info); if(info!=0){goto err06;}
-      for(m=0;m<M;m++)for(d=0;d<D;d++){u[d+D*m]=Y[d+D*m];for(i=0;i<M;i++)u[d+D*m]+=G[m+M*i]*E[i+M*d];}
+      for(m=0;m<M;m++)for(d=0;d<D;d++){u[d+D*m]=Y[d+D*m];/*for(i=0;i<M;i++)u[d+D*m]+=G[m+M*i]*E[i+M*d];*/}
       if(db){tr=0;
         for(i=0;i<M;i++)for(j=i;j<M;j++) G2[i+M*j]=G2[j+M*i]=G[i+M*j];
         dpotrs_(&uplo,&M,&M,G1,&M,G2,&M,&info);if(info!=0){goto err07;}
