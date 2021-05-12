@@ -214,7 +214,7 @@ int bcpd(
       for(m=0;m<M;m++)for(d=0;d<D;d++) W[d+D*m]/=cc;
       /* y */
       for(k=0;k<K;k++)for(d=0;d<D;d++){val=0;for(m=0;m<M;m++){val+=Q[m+M*k]*W[d+D*m];} B[k+K*d]=val*L[k];}
-      for(d=0;d<D;d++)for(m=0;m<M;m++){val=0;for(k=0;k<K;k++){val+=Q[m+M*k]*B[k+K*d];} u[d+D*m]=val+Y[d+D*m];}
+      for(d=0;d<D;d++)for(m=0;m<M;m++){val=0; u[d+D*m]=val+Y[d+D*m];}
     }
     else{/* CASE: full-rank */
       #pragma omp parallel for private (j)
